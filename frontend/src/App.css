@@ -1,38 +1,110 @@
-.App {
+body{
+  margin: 0;
+  background-color: #4A78EE;
+}
+
+/* html, body {margin: 0; height: 100%; overflow: hidden} */
+.navbar-nav{
+  /* background-color: aqua; */
+  margin-left: auto;
+  padding: 20px;
+  font-size: 20px;
+  font-family: 'Nunito';
+
+  
+}
+.navbar-brand{
+  padding-left: 20px;
+  font-size: 35px;
+  font-family: 'Nunito';
+  color: #FFFFFF;
+  
+}
+.para{
+  /* For an improved learning and teaching experience! */
+
+
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 49px;
   text-align: center;
+
+  color: rgba(255, 255, 255, 0.945);
+}
+.image{
+      /* Back to School Vector Illustration-ai 1 */
+      width: 50vw;
+      height: 50vh;
+    
+      background-size:cover;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+h4{
+  font-family: "Nunito";
+  font-weight: 700;
+  font-size: 48px;
+  padding: 20px;
+  text-align: center;
+  margin-top: 30px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+
+.btn{
+  
+  margin:auto;
+  display:block;
+  text-align: center;
+  font-weight: 700;
+  font-family: "Nunito";
+  left: 140px;
+  width: 50%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-radius: 20px;
+  
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.mail{
+  display:flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-self:center;
+   padding: 20px;
+   margin-top: 50px;
+  margin-left: 20px;
+   font-family: 'Nunito';
+}
+.password{
+ 
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    font-family: 'Nunito';
+}
+.forgetpass{
+  float: right;
+  margin-right: 60px;
+  text-decoration: none;
+}
+.form{
+  margin: 2vw;
+  display: flex;
+  height: 60vh !important;
+  align-items: center;
+  justify-content: center; 
+  background-color: #FFFFFF;
+  border-radius: 14px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.container{
+  
+  height: 90vh;
+  display: flex;
+  
+  align-items: center;
+  justify-content: center; 
 }
