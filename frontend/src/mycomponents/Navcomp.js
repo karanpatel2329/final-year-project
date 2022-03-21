@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const image = "school.png";
 function Nav(){
@@ -13,10 +14,10 @@ function Nav(){
                 <div className="collapse navbar-collapse " id="navbarNav">
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <a className="nav-link active text-white " aria-current="page" href="/">Home</a>
+                        <Link className="nav-link active text-white " aria-current="page" to={"/"}>Home</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link active text-white" href="/">About Us</a>
+                        <Link className="nav-link active text-white" to={"/about"}>About Us</Link>
                     </li>
                 </ul>
                 </div>
