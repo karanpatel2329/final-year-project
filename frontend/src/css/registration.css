@@ -1,0 +1,60 @@
+.main{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding-top: 10px;
+
+}
+.sub-main{
+    display: flex;
+    justify-content: center;
+    height: 80vh;
+    width: 80%;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+
+}
+h5{
+    /* text-align: center; */
+    margin-left: -40px;
+    font-size: 25px;
+    padding: 10px;
+    font-family: 'Nunito';
+    font-weight: 700;
+    position: absolute;
+    color: #000000;
+}
+.registerform{
+    margin-top: 80px;
+    margin-left: -150px;
+}
+.usn, .name,.sem,.branch,.dob,.mobile,.parents{
+    margin-left: -40px;
+}
+.text1{
+    width: 130%;
+    margin-left: 20px;
+}
+.submitbtn{
+    margin-top: 20px;
+    margin-left: 150px;
+}
+.branchname{
+    margin-left: 100px;
+    margin-top: -30px;
+    border-radius: 20px;
+    /* width: 200%; */
+    padding-right: 150px;
+    padding-top: 10px;
+}
+.registerconatiner{
+    margin: 2vw;
+    display: flex;
+    height: 70vh !important;
+    align-items: center;
+    justify-content: center; 
+    border-radius: 14px;
+}
+
+
+

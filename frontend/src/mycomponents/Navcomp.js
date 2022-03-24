@@ -19,6 +19,9 @@ function Nav(){
                     <li className="nav-item">
                         <Link className="nav-link active text-white" to={"/about"}>About Us</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link active text-white" to={"/signup"}>Sign Up</Link>
+                    </li>
                 </ul>
                 </div>
             </div>

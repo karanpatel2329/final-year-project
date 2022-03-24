@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import StudentLoginPage from './pages/studentLogin';
 import AboutUsPage from './pages/aboutUs';
+import RegistrationPage from './pages/registrationPage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
      <Routes>
         <Route path="/" element={<StudentLoginPage />} />
         <Route path="/about" element={<AboutUsPage/>}/>
+        <Route path="/signup" element={<RegistrationPage/>}/>
       </Routes>
       </Router>
     </>
