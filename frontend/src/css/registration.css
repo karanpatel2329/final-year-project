@@ -26,24 +26,22 @@ h5{
 }
 .registerform{
     margin-top: 80px;
-    margin-left: -150px;
-}
-.usn, .name,.sem,.branch,.dob,.mobile,.parents{
-    margin-left: -40px;
 }
 .text1{
-    width: 130%;
-    margin-left: 20px;
+    width: 30vw;
+}.branch{
+    width: 30vw;
+    
 }
 .submitbtn{
     margin-top: 20px;
-    margin-left: 150px;
 }
 .branchname{
     margin-left: 100px;
     margin-top: -30px;
     border-radius: 20px;
     /* width: 200%; */
+    border-color: gray;
     padding-right: 150px;
     padding-top: 10px;
 }
@@ -55,6 +53,8 @@ h5{
     justify-content: center; 
     border-radius: 14px;
 }
-
+.registerform label{
+    text-align: left;
+}
 
 

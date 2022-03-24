@@ -27,7 +27,7 @@ function Registercomp() {
                             <input type="number" min='1' max='8' class=" text1 form-control rounded-pill" id="name"/>
                         </div>
                     </div>
-                    <div className=" branch mb-3 row">
+                    <div className="branch mb-3 row">
                         <label htmlFor="branch" class="col-sm-2 col-form-label">Branch</label>
                         <select name='branch' className='branchname' >
                             <option value='cse'>CSE</option>

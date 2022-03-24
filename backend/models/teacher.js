@@ -2,8 +2,8 @@ var mongoose=require('mongoose');
 const Schema = require('mongoose').Schema;
 const jwt = require("jsonwebtoken");
 const config = require('config');   
-var StudentSchema =new mongoose.Schema({
-    USN: {
+var TeacherSchema =new mongoose.Schema({
+    EmployeeId: {
         type: String,
         unique:true,
         required:true,
@@ -12,12 +12,12 @@ var StudentSchema =new mongoose.Schema({
         type: String,
         required:true,
     },
-    branch: {
+    Dep: {
         type: String,
         required:true
     },
-    sem: {
-        type: Number,
+    gender: {
+        type: String,
         required:true
     },
     subject:[{
@@ -30,6 +30,9 @@ var StudentSchema =new mongoose.Schema({
     attendence:{
         type: Schema.Types.ObjectId,
         ref: 'Attendance'
+    },
+    role:{
+        type:String,
     },
     contactInfo:{
         address:{
@@ -51,11 +54,11 @@ var StudentSchema =new mongoose.Schema({
         required:true
     }
 });
-StudentSchema.methods.generateAuthToken = function(){
-    const token = jwt.sign({_id:this._id,USN:this.USN,branch:this.branch},config.get('jwtPrivateKey'));
+TeacherSchema.methods.generateAuthToken = function(){
+    const token = jwt.sign({_id:this._id,EmployeeId:this.EmployeeId,dep:this.dep},config.get('jwtPrivateKey'));
     return token; 
 }
-const Student = mongoose.model('Student',StudentSchema);
+const Teacher = mongoose.model('Teacher',TeacherSchema);
 
 
-module.exports = Student;
+module.exports = Teacher;

@@ -1,4 +1,4 @@
-
+import React from 'react'
 import Details from '../mycomponents/Form';
 import Nav from '../mycomponents/Navcomp';
 import SchoolImage from '../assets/school.png';

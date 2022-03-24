@@ -1,5 +1,5 @@
 import Nav from "../mycomponents/Navcomp";
-
+import React from 'react'
 function AboutUsPage(){
     return (
         <>
