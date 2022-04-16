@@ -7,21 +7,21 @@ router.post('/',async(req,res)=>{
     try{
      let teach = await Teacher.findOne({EmployeeId:req.body.EmployeeId});
      if(!teach){
-         return res.status(400).send({
+         return res.send({
              'data':'',
              'error':'Employee Id is not found.'
          });
      }
     validatePassword = await bcrypt.compare(req.body.password,teach.password);
      if(!validatePassword){
-        return res.status(400).send({
+        return res.send({
             'data':'',
             'error':'Wrong Password'
         });
      }else{
          
         token = teach.generateAuthToken();
-        return res.status(400).send({
+        return res.send({
             'data':'Login Successfull',
             'token':token
         });

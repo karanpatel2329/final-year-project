@@ -8,7 +8,6 @@
 .sub-main{
     display: flex;
     justify-content: center;
-    height: 80vh;
     width: 80%;
     border-radius: 20px;
     background-color: #FFFFFF;
@@ -36,9 +35,7 @@ h5{
     margin-top: 20px;
 }
 .branchname{
-    margin-left: 100px;
-    margin-top: -30px;
-    border-radius: 20px;
+
     /* width: 200%; */
     border-color: gray;
     padding-right: 150px;

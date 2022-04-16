@@ -1,4 +1,4 @@
-import Nav from "../mycomponents/Navcomp";
+import Nav from "../mycomponents/student/Navcomp";
 import React from 'react'
 function AboutUsPage(){
     return (

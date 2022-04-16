@@ -1,8 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
+import { useEffect,useState } from "react";
 const image = "school.png";
 function Nav(){
+    const [token, setToken] = useState();
+   useEffect(() => {
+        var t=localStorage.getItem('token');
+        console.log(t);
+        setToken(t);
+    });
     return(
         <>
             <nav className="navbar navbar-expand-lg navbar-light">
@@ -13,15 +20,20 @@ function Nav(){
                 </button>
                 <div className="collapse navbar-collapse " id="navbarNav">
                 <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <Link className="nav-link active text-white " aria-current="page" to={"/"}>Home</Link>
+                <li className="nav-item">
+                        <Link className="nav-link active text-white " aria-current="page" to={"/teacher"}>Home</Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link active text-white" to={"/about"}>About Us</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link active text-white" to={"/signup"}>Sign Up</Link>
+                        <Link className="nav-link active text-white" to={"/teacherSignUp"}>Sign Up</Link>
                     </li>
+                   {
+                       token!=null?<li className="nav-item">
+                       <Link className="nav-link active text-white" to={"/logout"}>Logout</Link>
+                   </li>:<></>
+                   }
                 </ul>
                 </div>
             </div>

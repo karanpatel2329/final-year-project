@@ -2,6 +2,7 @@ const express = require('express');
 const Question = require('../../models/question');
 const router = express.Router();
 router.get('/',async(req,res)=>{
+    console.log("JJS");
     try{
         console.log();
         var query={

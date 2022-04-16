@@ -3,11 +3,11 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const Student= require("../models/students");
 const config = require("config");
+
 router.post('/',async(req,res)=>{
     console.log(req.body.USN);
     try{
      let stud = await Student.findOne({USN:req.body.USN});
-     console.log(stud);
      if(!stud){
          return res.send({
              'data':'',
@@ -21,12 +21,8 @@ router.post('/',async(req,res)=>{
             'error':'Wrong Password'
         });
      }else{
-         
-        token = stud.generateAuthToken();
-        return res.send({
-            'data':'Login Successfull',
-            'token':token
-        });
+        token = stud.generateAuthToken();   
+        res.send({"data":"Success","error":"","token":token})   
      }
      
     }catch(e){

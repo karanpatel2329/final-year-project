@@ -31,7 +31,7 @@ function LoginForm(){
         event.preventDefault();
         console.log(usn,password);
         const user = {
-          USN: usn,
+          EmployeeId: usn,
           password:password
         };
     
@@ -41,17 +41,17 @@ function LoginForm(){
                 "Access-Control-Allow-Origin": "localhost:3000",
             }
           };
-        axios.post('http://localhost:3000/studentLogin',  user , axiosConfig)
+        axios.post('http://localhost:3000/teacherLogin',  user , axiosConfig)
           .then(res => {
-            console.log(res.data);
             if(res.data.data.length==0){
               handleClickToOpen();
             }else{
+              localStorage.setItem('token',res.data.token);
               navigate('/signup');
             }
           
             
-          })//.catch(e=>console.log(e))
+          }).catch(e=>console.log(e));
       }
       return(
         

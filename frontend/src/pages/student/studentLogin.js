@@ -1,13 +1,21 @@
 import React from 'react'
-import Details from '../mycomponents/Form';
-import Nav from '../mycomponents/Navcomp';
-import SchoolImage from '../assets/school.png';
-
-import '../css/studentLogin.css';
+import Details from '../../mycomponents/student/LoginComp';
+import Nav from '../../mycomponents/student/Navcomp';
+import SchoolImage from '../../assets/school.png';
+import { useNavigate } from 'react-router-dom';
+import '../../css/studentLogin.css';
 import { Container } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { useEffect } from "react";
 function StudentLoginPage(){
+   const navigate = useNavigate()
+   useEffect(() => {
+      var token = localStorage.getItem('token');
+      if(token){
+         navigate('/about');
+      }
+    });
     return (<>
         <Nav/>
       <Container className="container">
