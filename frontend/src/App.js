@@ -18,6 +18,7 @@ import Logout from './pages/logout';
 import QuestionSet from './pages/teacher/question set/questionSet';
 import Dashboard from './pages/teacher/dashboard/dashboard';
 import PaperGen from './pages/teacher/paper generator/paperGen';
+import AddSubject from './pages/teacher/addSubject/addSubject';
 function App() {
   return (
     
@@ -33,6 +34,7 @@ function App() {
         <Route path='/teacher/questionSet' element={<QuestionSet/>}/>
         <Route path='/teacher/dashboard' element={<Dashboard/>}/>
         <Route path='/teacher/paperGen' element={<PaperGen/>}/>
+        <Route path='/teacher/addSubject' element={<AddSubject/>}/>
       </Routes>
       </Router>
     </>

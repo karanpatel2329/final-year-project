@@ -1,0 +1,11 @@
+.subjectForm{
+    text-align: left;
+    width: 50vw;
+}
+.deleteBtn{
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    width: 50px;
+    background-color: white;
+    border: none;
+}

@@ -38,7 +38,10 @@ const SideNavBar = ({ toggled, handleToggleSidebar }) => {
 
       <SidebarContent>
         <Menu >
-          <MenuItem icon={<FaHome />}><a href="/teacher/dashboard">Dashboard</a></MenuItem>
+          <MenuItem active={true} icon={<FaHome />}><a href="/teacher/dashboard">Dashboard</a></MenuItem>
+        </Menu>
+        <Menu >
+          <MenuItem active={false} icon={<FaNewspaper />}><a href='/teacher/addSubject'>Add Subject</a></MenuItem>
         </Menu>
         <Menu >
           <MenuItem icon={<FaListAlt />}><a href="/teacher/questionSet">Question Set</a></MenuItem>

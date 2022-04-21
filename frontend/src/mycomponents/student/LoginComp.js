@@ -60,7 +60,7 @@ function LoginForm(){
               <DialogTitle>{"Wrong Password"}</DialogTitle>
               <DialogContent>
                 <DialogContentText>
-                  I am Good, Hope the same for you!
+                  Invalid Id or Password
                 </DialogContentText>
               </DialogContent>
               <DialogActions>

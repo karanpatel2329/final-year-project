@@ -6,7 +6,7 @@ import axios from 'axios';
 
 import { Container } from 'react-bootstrap';
 function QuestionSetMain({handleToggleSidebar,data}){
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [type, setType] = useState();
   const [subjectCode, setSubjectCode] = useState();
   const [question, setQuestion] = useState();
@@ -55,10 +55,10 @@ function QuestionSetMain({handleToggleSidebar,data}){
       <div className='questionList'>
       <Fragment key={0}>
           <TableRow>
-            <TableCell className='index' align="left"> Index</TableCell>
-            <TableCell className='question' align="left">Question</TableCell>
-            <TableCell className='subjectCode' align="center">Subject Code</TableCell>
-            <TableCell className='marks' align="center">Marks</TableCell>
+            <TableCell className='index' align="left"><b> Index</b></TableCell>
+            <TableCell className='question' align="left"><b>Question</b></TableCell>
+            <TableCell className='subjectCode' align="center"><b>Subject Code</b></TableCell>
+            <TableCell className='marks' align="center"><b>Marks</b></TableCell>
           </TableRow>
         </Fragment>
       {data.map((ques,index)=>(

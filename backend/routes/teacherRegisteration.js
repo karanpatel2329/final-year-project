@@ -6,7 +6,7 @@ router.post('/',async(req,res)=>{
     try{
      let teach = await Teacher.findOne({EmployeeId:req.body.EmployeeId});
      if(teach){
-         return res.status(400).send({
+         return res.status(200).send({
              'data':'',
              'error':'EmployeeId is already registered'
          });
