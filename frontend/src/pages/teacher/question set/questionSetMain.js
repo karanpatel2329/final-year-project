@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import '../../../css/test.css'
-import { Dialog, DialogActions, Button, FormGroup, TextField, FormControl, InputLabel, Select, MenuItem, TableRow, TableCell, IconButton,  Paper, Typography, Grid, makeStyles, withStyles, Checkbox, ListItemText, Tooltip, FormControlLabel, Radio } from '@material-ui/core'
+import { Dialog, Button, TableRow, TableCell,  } from '@material-ui/core'
 import '../../../css/dashboardMain.css';
 import axios from 'axios';
 
@@ -135,7 +135,7 @@ function QuestionSetMain({handleToggleSidebar,data}){
                             <input type="number" min='1' max='5' class=" text1 form-control" onChange={e=>setCoNo(e.target.value)} id="moduleNo"/>
                         </div>
                     </div>
-                    {type=="objective"?<div className=" sem mb-3 row">
+                    {type==="objective"?<div className=" sem mb-3 row">
                         <label htmlFor="sem" class="col-sm-2 col-form-label">Objective Options</label>
                         <div className="col-sm-10">
                             <textarea id='address'  name='address' className='text1 form-control'onChange={e=>setOption([e.target.value])} ></textarea>

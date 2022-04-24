@@ -1,4 +1,8 @@
+.main{
+    display:block !important;
+}
 .subjectForm{
+    display: block !important;
     text-align: left;
     width: 50vw;
 }
@@ -7,5 +11,20 @@
     margin-bottom: 0px !important;
     width: 50px;
     background-color: white;
+    color: red;
     border: none;
+}
+.deleteBtn:hover{
+    color: white;
+    background-color: #4A78EE ;
+}
+.firstRow{
+    background-color: gainsboro;
+}
+.paddingRight{
+    padding-right: 10px;
+   
+}
+.paddingTop{
+    padding-top: 10px;
 }

@@ -11,8 +11,11 @@ const deleteQuestion = require('./routes/question/deleteQuestion');
 const getQuestion = require('./routes/question/getQuestion');
 const addSubject = require('./routes/subject/addSubject');
 const getSubject = require('./routes/subject/getSubject');
+const getSubjectById = require('./routes/subject/getSubjectById');
 const deleteSubject = require('./routes/subject/deleteSubject');
 const generatePaper = require('./routes/question/generateQP');
+const getTeacherList = require('./routes/teacher/getTeacherList');
+
 const config = require('config');
 const cors = require('cors');
 const PORT = process.env.PORT||3000;
@@ -29,6 +32,7 @@ app.use('/studentRegistration',studentRegistration);
 app.use("/studentLogin",studetLogin);
 app.use("/teacherRegistration",teacherRegistration);
 app.use("/teacherLogin",teacherLogin);
+app.use('/teacherList',getTeacherList);
 app.use("/profile",studentProfile);
 app.use("/addQuestion",addQuestion);
 app.use("/updateQuestion",updateQuestion);
@@ -36,6 +40,7 @@ app.use("/deleteQuestion",deleteQuestion);
 app.use("/getQuestion",getQuestion);
 app.use("/addSubject",addSubject);
 app.use('/getSubject',getSubject);
+app.use('/getSubjectById',getSubjectById);
 app.use('/deleteSubject',deleteSubject);
 app.use('/generateQP',generatePaper);
 app.listen(PORT, function () {

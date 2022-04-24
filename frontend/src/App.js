@@ -5,9 +5,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link,
-  Switch,
-  BrowserRouter
 } from "react-router-dom";
 import StudentLoginPage from './pages/student/studentLogin';
 import AboutUsPage from './pages/aboutUs';
@@ -19,6 +16,7 @@ import QuestionSet from './pages/teacher/question set/questionSet';
 import Dashboard from './pages/teacher/dashboard/dashboard';
 import PaperGen from './pages/teacher/paper generator/paperGen';
 import AddSubject from './pages/teacher/addSubject/addSubject';
+
 function App() {
   return (
     

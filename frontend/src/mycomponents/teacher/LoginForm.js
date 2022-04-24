@@ -43,7 +43,7 @@ function LoginForm(){
           };
         axios.post('http://localhost:3000/teacherLogin',  user , axiosConfig)
           .then(res => {
-            if(res.data.data.length==0){
+            if(res.data.data.length===0){
               handleClickToOpen();
             }else{
               localStorage.setItem('token',res.data.token);

@@ -18,7 +18,6 @@ function Layout() {
           "Access-Control-Allow-Origin": "localhost:300",
       }
     };
-    var ls;
   axios.get('http://localhost:3000/getQuestion', {},axiosConfig)
     .then(res => {
       console.log(res);

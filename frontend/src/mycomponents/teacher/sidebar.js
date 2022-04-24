@@ -3,9 +3,7 @@ import {
   ProSidebar,
   Menu,
   MenuItem,
-  SubMenu,
   SidebarHeader,
-  SidebarFooter,
   SidebarContent,
 } from 'react-pro-sidebar';
 import { FaHome,FaNewspaper,FaListAlt } from 'react-icons/fa';
@@ -32,7 +30,7 @@ const SideNavBar = ({ toggled, handleToggleSidebar }) => {
             whiteSpace: 'nowrap',
           }}
         >
-         <img src={hkbkLogo} />
+         <img src={hkbkLogo} alt="college logo" />
       </div>
       </SidebarHeader>
 

@@ -45,7 +45,7 @@ function Registercomp() {
         axios.post('http://localhost:3000/studentRegistration',  user , axiosConfig)
             .then(res => {
               console.log(res.data);
-              if(res.data.data.length==0){
+              if(res.data.data.length===0){
               //   handleClickToOpen();
               }else{
                 navigate('/');

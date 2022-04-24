@@ -14,7 +14,6 @@ function PaperGenMain({handleToggleSidebar,}){
           "Access-Control-Allow-Origin": "localhost:300",
       }
     };
-    var ls;
   axios.get('http://localhost:3000/getSubject', {},axiosConfig)
     .then(res => {
       console.log(res.data);

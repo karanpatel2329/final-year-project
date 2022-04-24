@@ -15,6 +15,7 @@ const subjectSchema = new Schema(
             type:String,
             required:true
         }, 
+        assignTeacher: [{ type: Schema.Types.ObjectId, ref: 'teachers' }]
     }
 )
 

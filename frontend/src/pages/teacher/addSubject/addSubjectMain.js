@@ -6,17 +6,22 @@ import { Dialog, DialogActions, TableRow, TableCell,Table  } from '@material-ui/
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
-import { useNavigate } from 'react-router-dom';
-import { FaTrashAlt } from 'react-icons/fa';
+import { FaTrashAlt,FaPencilAlt } from 'react-icons/fa';
+import { default as ReactSelect } from "react-select";
+import { components } from "react-select";
+
 function AddSubjectMain({handleToggleSidebar}){
   const [subject,setSubject]=useState();
   const [subjectCode, setSubjectCode]=useState();
   const [subjectShort, setSubjectShort]=useState();  
   const [open, setOpen] = React.useState(false);
   const [data, setData] = useState([]); 
+  const [teacherList, setTeacherList] = useState([]);
+  const [assignTeacher, setAssignTeacher] = useState([]);
+  const [optionSelected , selectOptionSelected]= useState();
   const handleClickToOpen = () => {setOpen(true);};
-  
   const handleToClose = () => {setOpen(false);};
+  
   const deleteSub =(id)=>{
     console.log(id);
     const subjectJson = {
@@ -39,14 +44,10 @@ function AddSubjectMain({handleToggleSidebar}){
       }
     }).catch(e=>console.log(e))
   }
-  const navigate = useNavigate();
-  const onSubmit=event=>{  
-    event.preventDefault();
-    console.log(subject,subjectCode,subjectShort);
+  const onEdit=(id)=>{
+    console.log(id);
     const subjectJson = {
-      name: subject,
-      shortName:subjectShort,
-      code:subjectCode
+      _id: id,
     };
     let axiosConfig = {
       headers: {
@@ -54,17 +55,55 @@ function AddSubjectMain({handleToggleSidebar}){
           "Access-Control-Allow-Origin": "localhost:3000",
       }
     };
+    console.log(subjectJson)
+  axios.post('http://localhost:3000/getSubjectById',  {"_id":id} , axiosConfig)
+    .then(res => {
+      console.log(res.data[0]);
+      setSubject(res.data[0].name);
+      setSubjectCode(res.data[0].code);
+      setSubjectShort(res.data[0].shortName);
+      setOpen(true);
+    }).catch(e=>console.log(e))
+  }
+  const onSubmit=event=>{  
+    event.preventDefault();
+    
+    var assignTeacherId=[];
+    assignTeacher.map(e=>{
+      assignTeacherId.push(e.value);
+    })
+    const subjectJson = {
+      _id:"",
+      name: subject,
+      shortName:subjectShort,
+      code:subjectCode,
+      assignTeacher:assignTeacherId
+    };
+    console.log(assignTeacherId);
+    let axiosConfig = {
+      headers: {
+          'Content-Type': 'application/json;charset=UTF-8',
+          "Access-Control-Allow-Origin": "localhost:3000",
+      }
+    };
+    
+    console.log("JSsssJkkkk");
   axios.post('http://localhost:3000/addSubject',  subjectJson , axiosConfig)
     .then(res => {
-      if(res.data.data.length===0){
+      console.log(res);
+      console.log("JSsssJ");
+      if(res.data==undefined){
         handleClickToOpen();
       }else{
        handleToClose();
-       getData();
+       
       }
+      getData();
     
-      
-    }).catch(e=>console.log(e))
+      setSubject("");
+    setSubjectCode("");
+    setSubjectShort("");
+     }).catch(e=>console.log(e))
   }
   const getData=()=>{
     let axiosConfig = {
@@ -73,15 +112,35 @@ function AddSubjectMain({handleToggleSidebar}){
           "Access-Control-Allow-Origin": "localhost:300",
       }
     };
-    var ls;
+  
   axios.get('http://localhost:3000/getSubject', {},axiosConfig)
     .then(res => {
       console.log(res);
       setData(res.data);
   })};
   useEffect(() => {
+    getTeacherList();
     getData();
+    
     },[]);
+  const getTeacherList =()=>{
+    let axiosConfig = {
+      headers: {
+          'Content-Type': 'application/json;charset=UTF-8',
+          "Access-Control-Allow-Origin": "localhost:300",
+      }
+    };
+    console.log("Hi");
+    axios.get('http://localhost:3000/teacherList', {},axiosConfig)
+    .then(res => {
+      res.data.map(v=>{
+        console.log("*");
+        return teacherList.push({value:v._id,label:v.name})
+      },);
+    });
+  };
+  
+      
   return (
     
     <main className='main'>
@@ -103,9 +162,11 @@ function AddSubjectMain({handleToggleSidebar}){
       
       </div>
       <div>
+      <h1>Subject List</h1>
+      
         <Table>
       <Fragment key={0}>
-          <TableRow>
+          <TableRow className='firstRow'>
             <TableCell className='index' align="left"><b> Index</b></TableCell>
             <TableCell className='question' align="left"><b>Subject Name</b></TableCell>
             <TableCell className='subjectCode' align="center"><b>Subject Code</b></TableCell>
@@ -120,7 +181,8 @@ function AddSubjectMain({handleToggleSidebar}){
           <TableCell className='question' align="left" dangerouslySetInnerHTML={ { __html: subject.name } }></TableCell>
           <TableCell className='subjectCode' align="center" >{ subject.code }</TableCell>
           <TableCell className='marks' align="center">{ subject.shortName }</TableCell>
-          <TableCell className='delete' align='center'><Button className='deleteBtn' onClick={()=>deleteSub(subject._id)}><FaTrashAlt color='red'/></Button></TableCell>
+          <TableCell className='delete' align='center'><Button className='deleteBtn' onClick={()=>deleteSub(subject._id)}><FaTrashAlt className='color' /></Button><Button className='deleteBtn' onClick={()=>onEdit(subject._id)}><FaPencilAlt className='color' /></Button></TableCell>
+          <TableCell className='delete' align='center'></TableCell>
         </TableRow>
       </Fragment>
       ))}
@@ -132,17 +194,53 @@ function AddSubjectMain({handleToggleSidebar}){
     
     <Form className="subjectForm lg-12 md-12" onSubmit={onSubmit}>
     <center><h1>Add Subject</h1></center>
-        <Form.Group className="mb-6" controlId="formBasicSubjectName">
+        <Form.Group className="paddingTop" controlId="formBasicSubjectName">
             <Form.Label>Subject Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter Subject" onChange={e=>setSubject(e.target.value)}/>
+            <Form.Control type="text" placeholder="Enter Subject" onChange={e=>setSubject(e.target.value)} value={subject}/>
         </Form.Group>
-        <Form.Group className="mb-6" controlId="formBasicSubjectShortName">
+        <Form.Group className="paddingTop" controlId="formBasicSubjectShortName">
             <Form.Label>Subject Short Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter Subject Short Name" onChange={e=>setSubjectShort(e.target.value)}/>
+            <Form.Control type="text" placeholder="Enter Subject Short Name" onChange={e=>setSubjectShort(e.target.value)} value={subjectShort}/>
         </Form.Group>
-        <Form.Group className="mb-6" controlId="formBasicSubjectCode">
+        <Form.Group className="paddingTop" controlId="formBasicSubjectCode">
             <Form.Label>Subject Code</Form.Label>
-            <Form.Control type="text" placeholder="Enter Subject Code" onChange={e=>setSubjectCode(e.target.value)}/>
+            <Form.Control type="text" placeholder="Enter Subject Code" onChange={e=>setSubjectCode(e.target.value)} value={subjectCode}/>
+        </Form.Group>
+        <Form.Group className="paddingTop">
+          <Form.Label className='paddingRight'>Assign Teacher    </Form.Label>
+          <span
+        className="d-inline-block ml-6"
+        data-toggle="popover"
+        data-trigger="focus"
+        data-content="Please selecet account(s)"
+      >
+        <ReactSelect
+          onChange={e=>{setAssignTeacher([]); setAssignTeacher(e)}}
+          options={teacherList}
+          isMulti
+          value={optionSelected}
+        />
+      </span>
+        </Form.Group>
+        <Form.Group className="paddingTop" controlId="formBasicSubjectCode">
+            <Form.Label>Module 1 Topic</Form.Label>
+            <Form.Control type="text" placeholder="Separate each topic with common(Eg. Topic1, Topic2)" onChange={e=>setSubjectCode(e.target.value)} value={subjectCode}/>
+        </Form.Group>
+        <Form.Group className="paddingTop" controlId="formBasicSubjectCode">
+            <Form.Label>Module 2 Topic</Form.Label>
+            <Form.Control type="text" placeholder="Separate each topic with common(Eg. Topic1, Topic2)" onChange={e=>setSubjectCode(e.target.value)} value={subjectCode}/>
+        </Form.Group>
+        <Form.Group className="paddingTop" controlId="formBasicSubjectCode">
+            <Form.Label>Module 3 Topic</Form.Label>
+            <Form.Control type="text" placeholder="Separate each topic with common(Eg. Topic1, Topic2)" onChange={e=>setSubjectCode(e.target.value)} value={subjectCode}/>
+        </Form.Group>
+        <Form.Group className="paddingTop" controlId="formBasicSubjectCode">
+            <Form.Label>Module 4 Topic</Form.Label>
+            <Form.Control type="text" placeholder="Separate each topic with common(Eg. Topic1, Topic2)" onChange={e=>setSubjectCode(e.target.value)} value={subjectCode}/>
+        </Form.Group>
+        <Form.Group className="paddingTop" controlId="formBasicSubjectCode">
+            <Form.Label>Module 5 Topic</Form.Label>
+            <Form.Control type="text" placeholder="Separate each topic with common(Eg. Topic1, Topic2)" onChange={e=>setSubjectCode(e.target.value)} value={subjectCode}/>
         </Form.Group>
         <Button variant="primary" type="submit">
             Submit
