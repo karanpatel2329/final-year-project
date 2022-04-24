@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SideNavBar from '../../../mycomponents/teacher/sidebar';
 import QuestionSetMain from './questionSetMain';
 import 'react-pro-sidebar/dist/css/styles.css';
-import '../../../css/test.css'
+
 import { useEffect } from "react";
 import axios from 'axios';
 function Layout() {

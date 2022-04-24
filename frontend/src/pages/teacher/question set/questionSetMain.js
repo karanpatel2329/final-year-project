@@ -1,9 +1,9 @@
 import React, { Fragment, useState } from 'react';
-import '../../../css/test.css'
-import { Dialog, Button, TableRow, TableCell,  } from '@material-ui/core'
-import '../../../css/dashboardMain.css';
+import { Button } from 'react-bootstrap';
+import { Dialog, TableRow, TableCell,  } from '@material-ui/core'
+import '../../../css/questionSetMain.css';
 import axios from 'axios';
-
+import { FaTrashAlt,FaPencilAlt } from 'react-icons/fa';
 import { Container } from 'react-bootstrap';
 function QuestionSetMain({handleToggleSidebar,data}){
   const [open, setOpen] = useState(false);
@@ -50,15 +50,17 @@ function QuestionSetMain({handleToggleSidebar,data}){
       <div className="btn-toggle" onClick={() => handleToggleSidebar(true)}>
       
       </div>
-      <h1>Question Set Main</h1>
-      <Button onClick={()=>{setOpen(!open); console.log(open)}}>Add Ques</Button>
+      <h1>Question To Database</h1>
+    
+      
       <div className='questionList'>
       <Fragment key={0}>
-          <TableRow>
+          <TableRow className='firstRow'>
             <TableCell className='index' align="left"><b> Index</b></TableCell>
             <TableCell className='question' align="left"><b>Question</b></TableCell>
             <TableCell className='subjectCode' align="center"><b>Subject Code</b></TableCell>
             <TableCell className='marks' align="center"><b>Marks</b></TableCell>
+            <TableCell></TableCell>
           </TableRow>
         </Fragment>
       {data.map((ques,index)=>(
@@ -69,10 +71,14 @@ function QuestionSetMain({handleToggleSidebar,data}){
             <TableCell className='question' align="left" dangerouslySetInnerHTML={ { __html: ques.questionText } }></TableCell>
             <TableCell className='subjectCode' align="center" >{ ques.subjectCode }</TableCell>
             <TableCell className='marks' align="center">{ ques.marks }</TableCell>
+            <TableCell className='delete' align='center'><Button className='deleteBtn' onClick={()=>console.log(ques.id)}><FaTrashAlt className='color' /></Button><Button className='deleteBtn' onClick={()=>console.log(ques.id)}><FaPencilAlt className='color' /></Button></TableCell>
+          
           </TableRow>
         </Fragment>
       ))}
+       <Button onClick={()=>{setOpen(!open); console.log(open)}}>Add Ques</Button>
       </div>
+     
       {open?<Dialog open={open} onClose={ () => setOpen(false) } fullWidth maxWidth="lg">
       <Container > 
                 <div className='sub-main'>

@@ -15,7 +15,7 @@ const getSubjectById = require('./routes/subject/getSubjectById');
 const deleteSubject = require('./routes/subject/deleteSubject');
 const generatePaper = require('./routes/question/generateQP');
 const getTeacherList = require('./routes/teacher/getTeacherList');
-
+const getStudenttList = require('./routes/student/getStudentList');
 const config = require('config');
 const cors = require('cors');
 const PORT = process.env.PORT||3000;
@@ -30,6 +30,7 @@ app.use(express.json());
 
 app.use('/studentRegistration',studentRegistration);
 app.use("/studentLogin",studetLogin);
+app.use('/getStudentList',getStudenttList);
 app.use("/teacherRegistration",teacherRegistration);
 app.use("/teacherLogin",teacherLogin);
 app.use('/teacherList',getTeacherList);

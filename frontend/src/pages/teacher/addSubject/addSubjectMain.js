@@ -8,7 +8,6 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import { FaTrashAlt,FaPencilAlt } from 'react-icons/fa';
 import { default as ReactSelect } from "react-select";
-import { components } from "react-select";
 
 function AddSubjectMain({handleToggleSidebar}){
   const [subject,setSubject]=useState();
@@ -177,20 +176,19 @@ function AddSubjectMain({handleToggleSidebar}){
       {data.map((subject,index)=>(
       <Fragment key={subject._id}>
         <TableRow key={subject._id}  justify="space-between">
-          <TableCell className='index' align="left" >{ index}</TableCell>
+          <TableCell className='index' align="left" >{ index+1}</TableCell>
           <TableCell className='question' align="left" dangerouslySetInnerHTML={ { __html: subject.name } }></TableCell>
           <TableCell className='subjectCode' align="center" >{ subject.code }</TableCell>
           <TableCell className='marks' align="center">{ subject.shortName }</TableCell>
           <TableCell className='delete' align='center'><Button className='deleteBtn' onClick={()=>deleteSub(subject._id)}><FaTrashAlt className='color' /></Button><Button className='deleteBtn' onClick={()=>onEdit(subject._id)}><FaPencilAlt className='color' /></Button></TableCell>
-          <TableCell className='delete' align='center'></TableCell>
-        </TableRow>
+           </TableRow>
       </Fragment>
       ))}
       </Table>
       </div>
         <Button onClick={()=>setOpen(true)}>ADD Subject</Button>
        
-    {open?<Dialog open={open} onClose={ () => setOpen(false) } fullWidth maxWidth="lg"> <Container>
+    {open?<Dialog open={open} onClose={ () => setOpen(false) } fullWidth maxWidth="lg"> <Container class="container">
     
     <Form className="subjectForm lg-12 md-12" onSubmit={onSubmit}>
     <center><h1>Add Subject</h1></center>
