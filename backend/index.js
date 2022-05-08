@@ -16,6 +16,7 @@ const deleteSubject = require('./routes/subject/deleteSubject');
 const generatePaper = require('./routes/question/generateQP');
 const getTeacherList = require('./routes/teacher/getTeacherList');
 const getStudenttList = require('./routes/student/getStudentList');
+const addMark = require('./routes/ia/addIaMarks');
 const config = require('config');
 const cors = require('cors');
 const PORT = process.env.PORT||3000;
@@ -44,6 +45,7 @@ app.use('/getSubject',getSubject);
 app.use('/getSubjectById',getSubjectById);
 app.use('/deleteSubject',deleteSubject);
 app.use('/generateQP',generatePaper);
+app.use('/addMark',addMark);
 app.listen(PORT, function () {
     console.log("Server Started and Running",PORT);
 })

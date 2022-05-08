@@ -1,16 +1,16 @@
 import React, { Fragment, useState,useEffect } from 'react';
 import { Container,Form,Button } from 'react-bootstrap';
-import '../../../css/addSubject.css';
+import '../../../../css/addSubject.css';
 import axios from 'axios';
+import { default as ReactSelect } from "react-select";
+
 import { Dialog, DialogActions, TableRow, TableCell,Table  } from '@material-ui/core'
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import { FaTrashAlt,FaPencilAlt } from 'react-icons/fa';
-import { default as ReactSelect } from "react-select";
-
-function AddSubjectMain({handleToggleSidebar}){
-  const [subject,setSubject]=useState();
+function AddComponent (){
+    const [subject,setSubject]=useState();
   const [subjectCode, setSubjectCode]=useState();
   const [subjectShort, setSubjectShort]=useState();  
   const [open, setOpen] = React.useState(false);
@@ -24,54 +24,11 @@ function AddSubjectMain({handleToggleSidebar}){
   const [mod4,setMod4]=useState();
   const [mod5,setMod5]=useState();
 
-  const handleClickToOpen = () => {setOpen(true);};
-  const handleToClose = () => {setOpen(false);   setSubject("");
-  setSubjectCode("");
-  setSubjectShort("");};
-  
-  const deleteSub =(id)=>{
-    console.log(id);
-    const subjectJson = {
-      _id: id,
-    };
-    let axiosConfig = {
-      headers: {
-          'Content-Type': 'application/json;charset=UTF-8',
-          "Access-Control-Allow-Origin": "localhost:3000",
-      }
-    };
-    console.log(subjectJson)
-  axios.post('http://localhost:3000/deleteSubject',  {"_id":id} , axiosConfig)
-    .then(res => {
-      if(res.data.data.length===0){
-        handleClickToOpen();
-      }else{
-        
-        getData();
-      }
-    }).catch(e=>console.log(e))
-  }
-  const onEdit=(id)=>{
-    console.log(id);
-    const subjectJson = {
-      _id: id,
-    };
-    let axiosConfig = {
-      headers: {
-          'Content-Type': 'application/json;charset=UTF-8',
-          "Access-Control-Allow-Origin": "localhost:3000",
-      }
-    };
-    console.log(subjectJson)
-  axios.post('http://localhost:3000/getSubjectById',  {"_id":id} , axiosConfig)
-    .then(res => {
-      console.log(res.data[0]);
-      setSubject(res.data[0].name);
-      setSubjectCode(res.data[0].code);
-      setSubjectShort(res.data[0].shortName);
-      setOpen(true);
-    }).catch(e=>console.log(e))
-  }
+  const handleClickToOpen = () => {setOpen(true);
+    setSubject("");
+    setSubjectCode("");
+    setSubjectShort("");};
+  const handleToClose = () => {setOpen(false);  };
   const onSubmit=event=>{  
     event.preventDefault();
     
@@ -145,57 +102,7 @@ function AddSubjectMain({handleToggleSidebar}){
       },);
     });
   };
-  
-      
-  return (
-    
-    <main className='main'>
-      <Dialog open={open} onClose={handleToClose}>
-              <DialogTitle>{"Something went wrong"}</DialogTitle>
-              <DialogContent>
-                <DialogContentText>
-                  Please Try Later
-                </DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={handleToClose} 
-                        color="primary" autoFocus>
-                  Close
-                </Button>
-              </DialogActions>
-            </Dialog>
-      <div className="btn-toggle" onClick={() => handleToggleSidebar(true)}>
-      
-      </div>
-      <div>
-      <h1>Subject List</h1>
-      
-        <Table>
-      <Fragment key={0}>
-          <TableRow className='firstRow'>
-            <TableCell className='index' align="left"><b> Index</b></TableCell>
-            <TableCell className='question' align="left"><b>Subject Name</b></TableCell>
-            <TableCell className='subjectCode' align="center"><b>Subject Code</b></TableCell>
-            <TableCell className='marks' align="center"><b>Subject ShortName</b></TableCell>
-            <TableCell className='delete' align='center'></TableCell>
-          </TableRow>
-        </Fragment>
-      {data.map((subject,index)=>(
-      <Fragment key={subject._id}>
-        <TableRow key={subject._id}  justify="space-between">
-          <TableCell className='index' align="left" >{ index+1}</TableCell>
-          <TableCell className='question' align="left" dangerouslySetInnerHTML={ { __html: subject.name } }></TableCell>
-          <TableCell className='subjectCode' align="center" >{ subject.code }</TableCell>
-          <TableCell className='marks' align="center">{ subject.shortName }</TableCell>
-          <TableCell className='delete' align='center'><Button className='deleteBtn' onClick={()=>deleteSub(subject._id)}><FaTrashAlt className='color' /></Button><Button className='deleteBtn' onClick={()=>onEdit(subject._id)}><FaPencilAlt className='color' /></Button></TableCell>
-           </TableRow>
-      </Fragment>
-      ))}
-      </Table>
-      </div>
-        <Button onClick={()=>setOpen(true)}>ADD Subject</Button>
-       
-    {open?<Dialog open={open} onClose={ () => setOpen(false) } fullWidth maxWidth="lg"> <Container class="container">
+    return(<Container class="container">
     
     <Form className="subjectForm lg-12 md-12" onSubmit={onSubmit}>
     <center><h1>Add Subject</h1></center>
@@ -251,9 +158,7 @@ function AddSubjectMain({handleToggleSidebar}){
             Submit
         </Button>
     </Form>   
-    </Container></Dialog>:<></> }
-    </main>
-  );
-}
+    </Container>);
 
-export default AddSubjectMain;
+}
+export default AddComponent;

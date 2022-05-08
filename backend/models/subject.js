@@ -15,7 +15,23 @@ const subjectSchema = new Schema(
             type:String,
             required:true
         }, 
-        assignTeacher: [{ type: Schema.Types.ObjectId, ref: 'teachers' }]
+        assignTeacher: [{ type: Schema.Types.ObjectId, ref: 'teachers' }],
+        module1:[{
+            type:String
+        }],
+        module2:[{
+            type:String
+        }],
+        module3:[{
+            type:String
+        }],
+        module4:[{
+            type:String
+        }],
+        module5:[{
+            type:String
+        }],
+ 
     }
 )
 

@@ -9,7 +9,24 @@ router.post('/',async(req,res)=>{
         var re = await Subject.findOne(query)
         code =req.body.code;
         if(!re){
-            var subject = new Subject(req.body);
+            console.log(req.body.name);
+            var module1 = req.body.module1.split(",")
+            var module2 = req.body.module2.split(",")
+            var module3 = req.body.module3.split(",")
+            var module4 = req.body.module4.split(",")
+            var module5 = req.body.module5.split(",")
+            var subjectBody={
+                name: req.body.name,
+                code: req.body.code,
+                shortName: req.body.shortName,
+                assignTeacher: req.body.assignTeacher,
+                module1: module1,
+                module2: module2,
+                module3: module3,
+                module4: module4,
+                module5: module5 
+              }
+            var subject = new Subject(subjectBody);
             subject.save().then(()=>{
             return res.send({"data":subject,"error":""});
          });
