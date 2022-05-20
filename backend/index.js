@@ -19,6 +19,8 @@ const getTeacherProfile = require('./routes/teacher/teacherProfile');
 const getStudenttList = require('./routes/student/getStudentList');
 const updateTeacherProfile = require('./routes/teacher/updateTeacher');
 const addMark = require('./routes/ia/addIaMarks');
+const getEvent = require('./routes/event/getEvent');
+const addEvent = require('./routes/event/addEvent');
 const config = require('config');
 const cors = require('cors');
 const PORT = process.env.PORT||3000;
@@ -50,6 +52,8 @@ app.use('/generateQP',generatePaper);
 app.use('/addMark',addMark);
 app.use('/getTeacherProfile',getTeacherProfile);
 app.use('/updateTeacherProfile',updateTeacherProfile);
+app.use('/addEvent',addEvent);
+app.use('/getEvent',getEvent);
 app.listen(PORT, function () {
     console.log("Server Started and Running",PORT);
 })
