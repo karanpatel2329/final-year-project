@@ -1,13 +1,14 @@
 const express = require('express');
-const auth = require('../middlewares/auth');
-const Student = require('../models/students');
+const marks = require('../../models/marks');
+const studentMarks = require('../../models/studentMarks');
+const Subject = require('../../models/subject');
 const router = express.Router();
-router.post('/',auth,async(req,res)=>{
+router.get('/',async(req,res)=>{
+    console.log("JJS");
     try{
         var query={
-            USN:req.body.USN
-        };
-        var re = await Student.find(query)
+        }; 
+        var re = await studentMarks.find(query)
         res.send(re);
         console.log(re);
     }
@@ -16,5 +17,4 @@ router.post('/',auth,async(req,res)=>{
         return res.send({"data":"","error":"e"});
     }
 });
-
 module.exports =router;

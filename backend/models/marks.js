@@ -12,6 +12,14 @@ const markSchema = new Schema(
         totalQuestion:{
             type:Number
         },
+        totalMarks:{
+            type:Number,
+            default:0
+        },
+        totalObtainMark:{
+            type:Number,
+            default:0
+        },
         question:[
             {
                 questionNo:Number,
